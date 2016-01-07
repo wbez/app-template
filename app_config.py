@@ -36,26 +36,22 @@ ASSETS_SLUG = '$NEW_PROJECT_SLUG'
 
 """
 DEPLOYMENT
+
+These are placeholder locations, not to be used in production
 """
-PRODUCTION_S3_BUCKET = {
-    'bucket_name': 'app-template-production',
-    'region': 'US Standard'
-}
+PRODUCTION_S3_BUCKET = 'apps.wbez.org'
 
-STAGING_S3_BUCKET = {
-    'bucket_name': 'app-template-staging',
-    'region': 'US Standard'
-}
+STAGING_S3_BUCKET = 'stage-apps.wbez.org'
 
-ASSETS_S3_BUCKET = {
-    'bucket_name': 'app-template-assests',
-    'region': 'US Standard'
-}
+ASSETS_S3_BUCKET = 'assets.apps.wbez.org'
 
 DEFAULT_MAX_AGE = 20
 
-PRODUCTION_SERVERS = ['']
-STAGING_SERVERS = ['']
+RELOAD_TRIGGER = False
+RELOAD_CHECK_INTERVAL = 60
+
+PRODUCTION_SERVERS = ['cron.wbez.org']
+STAGING_SERVERS = ['cron-staging.wbez.org']
 
 # Should code be deployed to the web/cron servers?
 DEPLOY_TO_SERVERS = False
@@ -103,19 +99,19 @@ COPY_PATH = 'data/copy.xlsx'
 """
 SHARING
 """
-SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKET['bucket_name'], PROJECT_SLUG)
+SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKET, PROJECT_SLUG)
 
 """
 SERVICES
 """
 NPR_GOOGLE_ANALYTICS = {
-    'ACCOUNT_ID': 'none', #add id here
-    'DOMAIN': PRODUCTION_S3_BUCKET['bucket_name'],
+    'ACCOUNT_ID': 'UA-369047-1', #add id here
+    'DOMAIN': 'wbez.org',
     'TOPICS': '' # e.g. '[1014,3,1003,1002,1001]'
 }
 
 VIZ_GOOGLE_ANALYTICS = {
-    'ACCOUNT_ID': 'UA-5828686-75'
+    'ACCOUNT_ID': 'UA-369047-1'
 }
 
 DISQUS_API_KEY = ''
@@ -174,8 +170,8 @@ def configure_targets(deployment_target):
 
     if deployment_target == 'production':
         S3_BUCKET = PRODUCTION_S3_BUCKET
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
-        S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET, PROJECT_SLUG)
+        S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET, PROJECT_SLUG)
         SERVERS = PRODUCTION_SERVERS
         SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         SERVER_LOG_PATH = '/var/log/%s' % PROJECT_FILENAME
@@ -184,8 +180,8 @@ def configure_targets(deployment_target):
         ASSETS_MAX_AGE = 86400
     elif deployment_target == 'staging':
         S3_BUCKET = STAGING_S3_BUCKET
-        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
-        S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET['bucket_name'], PROJECT_SLUG)
+        S3_BASE_URL = 'http://%s/%s' % (S3_BUCKET, PROJECT_SLUG)
+        S3_DEPLOY_URL = 's3://%s/%s' % (S3_BUCKET, PROJECT_SLUG)
         SERVERS = STAGING_SERVERS
         SERVER_BASE_URL = 'http://%s/%s' % (SERVERS[0], PROJECT_SLUG)
         SERVER_LOG_PATH = '/var/log/%s' % PROJECT_FILENAME
