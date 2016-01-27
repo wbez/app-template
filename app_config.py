@@ -19,20 +19,20 @@ NAMES
 """
 # Project name to be used in urls
 # Use dashes, not underscores!
-PROJECT_SLUG = '$churchbells'
+PROJECT_SLUG = '$NEW_PROJECT_SLUG'
 
 # Project name to be used in file paths
 PROJECT_FILENAME = '$NEW_PROJECT_FILENAME'
 
 # The name of the repository containing the source
-REPOSITORY_NAME = '$churchbells'
+REPOSITORY_NAME = '$NEW_REPOSITORY_NAME'
 GITHUB_USERNAME = 'wbez'
 REPOSITORY_URL = 'git@github.com:%s/%s.git' % (GITHUB_USERNAME, REPOSITORY_NAME)
 REPOSITORY_ALT_URL = None # 'git@bitbucket.org:nprapps/%s.git' % REPOSITORY_NAME'
 
 # Project name used for assets rig
 # Should stay the same, even if PROJECT_SLUG changes
-ASSETS_SLUG = '$churchbells'
+ASSETS_SLUG = '$NEW_PROJECT_SLUG'
 
 """
 DEPLOYMENT
@@ -93,7 +93,7 @@ DEBUG = True
 """
 COPY EDITING
 """
-COPY_GOOGLE_DOC_KEY = '1w2m43YueB5YYYqYsJzBEAuQl604kniI-H6mGdfKW9cc'
+COPY_GOOGLE_DOC_KEY = '0AlXMOHKxzQVRdHZuX1UycXplRlBfLVB0UVNldHJYZmc'
 COPY_PATH = 'data/copy.xlsx'
 
 """
