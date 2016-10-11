@@ -18,7 +18,7 @@
     <!-- CSS -->
     {{ CSS.push('less/app.less') }}
     {% block extra_css %}{% endblock extra_css %}
-    {{ CSS.render('css/app.min.css') }}
+    {{ CSS.render('css/rendered/app.min.css') }}
 
     {% include '_social_tags.html' %}
 
@@ -27,13 +27,17 @@
 </head>
 <body>
     <!-- ANALYTICS JAVASCRIPT -->
+    {{ JS.push('js/lib/modernizr.js') }}
+    {{ JS.push('js/lib/cookie.js') }}
+    {{ JS.push('js/lib/es6-promise.js') }}
+    {{ JS.push('js/lib/cross-storage-client.js') }}
     {{ JS.push('js/app_config.js') }}
     {{ JS.push('js/analytics.js') }}
     {{ JS.render('js/app-header.min.js') }}
 
     <a class="sr-only" href="#content">Skip To Content</a>
 
-    {% block outer_content %}
+    {% block nav %}
 
     <nav role="navigation">
       <a class="wbez-logo" href="https://wbez.org">
@@ -51,34 +55,21 @@
         </svg>
       </a>
   
-        <ul class="social-links">
+        <ul class="site-links">
             <li class="twitter"><a rel="external" href="http://twitter.com/share?text={{ COPY.share.twitter_text|urlencode }}&amp;url={{ COPY.share.share_url|urlencode }}" alt="Share on Twitter" target="_blank" onclick="_gaq.push(['_trackEvent', '{{ PROJECT_SLUG }}', 'tweet', 'nav']);"><i class="fa fa-twitter"></i></a></li>
             <li class="facebook"><a rel="external" href="https://www.facebook.com/sharer/sharer.php?u={{COPY.share.share_url}}" alt="Share on Facebook" target="_blank" onclick="_gaq.push(['_trackEvent', '{{ PROJECT_SLUG }}', 'facebook', 'nav']);"><i class="fa fa-facebook"></i></a></li>
         </ul>
 
     </nav>
+    {% endblock nav %}
 
     {% block header_content %}
     {% endblock header_content %}
 
-    <section id="content">
-        <div class="container">
-            <div class="row">
-                <div id="main-content" class="col-md-8">
-                    {% block content %}
-                    <h1>{{ project_name }}</h1>
-                    App content goes here.
+    {% block content %}
+    {% endblock content %}
 
-                    <i class="icon icon-play"></i>
-                    {% endblock content %}
-                </div>
-
-            </div>
-            {% block wide_content %}
-            {% endblock wide_content %}
-        </div>
-    </section>
-
+    {% block footer %}
     <footer>
         <div class="primary">
             <ul>
@@ -86,7 +77,7 @@
             </ul>
         </div>
         <div class="secondary">
-            <p>&copy;2015 WBEZ</p>
+            <p>&copy;2016 WBEZ</p>
             <ul>
                 <li id="footerContact"><a href="http://www.wbez.org/contact">Contact</a></li>
                 <li id="footerContact"><a href="https://www.chicagopublicmedia.org/page/privacy-policy">Privacy Policy</a></li>
@@ -94,19 +85,11 @@
             </ul>
         </div>
     </footer>
-
-    {% endblock outer_content %}
-
-    {% block comments %}
-
-    {% endblock %}
+    {% endblock footer %}
 
     {{ JS.push('js/lib/jquery.js') }}
     {{ JS.push('js/lib/underscore.js') }}
-    {{ JS.push('js/lib/modernizr.js') }}
-    {{ JS.push('js/lib/bootstrap.js') }}
     {{ JS.push('js/lib/moment.js') }}
-    {{ JS.push('js/lib/ZeroClipboard.js') }}
 
     {# uncomment both files to use simpleStorage #}
     {# {{ JS.push('js/lib/simpleStorage.js') }} #}
@@ -117,10 +100,7 @@
     {% endif %}
 
     {{ JS.push('js/copy.js') }}
-    {{ JS.push('js/console.js') }}
     {{ JS.push('js/templates.js') }}
-    {{ JS.push('js/comments.js') }}
-    {{ JS.push('js/share.js') }}
     {{ JS.push('js/app.js') }}
     {% block extra_foot_js %}{% endblock extra_foot_js %}
     {{ JS.render('js/app-footer.min.js') }}

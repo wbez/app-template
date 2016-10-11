@@ -8,7 +8,7 @@ App Template for static publishing.
 """
 
 import app_config
-import json
+import logging
 import oauth
 import static
 
@@ -22,6 +22,10 @@ app.debug = app_config.DEBUG
 app.add_template_filter(smarty_filter, name='smarty')
 app.add_template_filter(urlencode_filter, name='urlencode')
 
+logging.basicConfig(format=app_config.LOG_FORMAT)
+logger = logging.getLogger(__name__)
+logger.setLevel(app_config.LOG_LEVEL)
+
 @app.route('/')
 @oauth.oauth_required
 def index():
@@ -30,31 +34,7 @@ def index():
     """
     context = make_context()
 
-    with open('data/featured.json') as f:
-        context['featured'] = json.load(f)
-
     return make_response(render_template('index.html', **context))
-
-@app.route('/comments/')
-def comments():
-    """
-    Full-page comments view.
-    """
-    return make_response(render_template('comments.html', **make_context()))
-
-@app.route('/widget.html')
-def widget():
-    """
-    Embeddable widget example page.
-    """
-    return make_response(render_template('widget.html', **make_context()))
-
-@app.route('/test_widget.html')
-def test_widget():
-    """
-    Example page displaying widget at different embed sizes.
-    """
-    return make_response(render_template('test_widget.html', **make_context()))
 
 app.register_blueprint(static.static)
 app.register_blueprint(oauth.oauth)
@@ -67,4 +47,4 @@ else:
 
 # Catch attempts to run the app directly
 if __name__ == '__main__':
-    print 'This command has been removed! Please run "fab app" instead!'
+    logging.error('This command has been removed! Please run "fab app" instead!')

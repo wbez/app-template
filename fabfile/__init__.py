@@ -19,6 +19,7 @@ import issues
 import render
 import text
 import utils
+import spreadsheet
 
 if app_config.DEPLOY_TO_SERVERS:
     import servers
@@ -37,7 +38,6 @@ env.user = app_config.SERVER_USER
 env.forward_agent = True
 
 env.hosts = []
-env.settings = None
 
 """
 Environments
@@ -98,20 +98,20 @@ def app(port='8000'):
     """
     Serve app.py.
     """
-    if env.settings:
-        local("DEPLOYMENT_TARGET=%s bash -c 'gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload app:wsgi_app'" % (env.settings, port))
+    if env.get('settings'):
+        local("DEPLOYMENT_TARGET=%s bash -c 'gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload --log-file=logs/app.log app:wsgi_app'" % (env.settings, port))
     else:
-        local('gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload app:wsgi_app' % port)
+        local('gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload --log-file=logs/app.log app:wsgi_app' % port)
 
 @task
 def public_app(port='8001'):
     """
     Serve public_app.py.
     """
-    if env.settings:
-        local("DEPLOYMENT_TARGET=%s bash -c 'gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload public_app:wsgi_app'" % (env.settings, port))
+    if env.get('settings'):
+        local("DEPLOYMENT_TARGET=%s bash -c 'gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload --log-file=logs/public_app.log public_app:wsgi_app'" % (env.settings, port))
     else:
-        local('gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload public_app:wsgi_app' % port)
+        local('gunicorn -b 0.0.0.0:%s --timeout 3600 --debug --reload --log-file=logs/public_app.log public_app:wsgi_app' % port)
 
 @task
 def tests():
@@ -132,6 +132,7 @@ def update():
     """
     Update all application data not in repository (copy, assets, etc).
     """
+    utils.install_font(force=False)
     text.update()
     assets.sync()
     data.update()

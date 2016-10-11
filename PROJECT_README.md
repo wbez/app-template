@@ -16,6 +16,8 @@ $NEW_PROJECT_SLUG
 * [Run the project](#run-the-project)
 * [COPY configuration](#copy-configuration)
 * [COPY editing](#copy-editing)
+* [Open Linked Google Spreadsheet](#open-linked-google-spreadsheet)
+* [Generating custom font](#generating-custom-font)
 * [Arbitrary Google Docs](#arbitrary-google-docs)
 * [Run Python tests](#run-python-tests)
 * [Run Javascript tests](#run-javascript-tests)
@@ -231,6 +233,51 @@ about_url
 download_label
 download_url
 ```
+
+Open Linked Google Spreadsheet
+------------------------------
+Want to edit/view the app's linked google spreadsheet, we got you covered.
+
+We have created a simple Fabric task ```spreadsheet```. It will try to find and open the app's linked google spreadsheet on your default browser.
+
+```
+fab spreadsheet
+```
+
+If you are working with other arbitraty google docs that are not involved with the COPY rig you can pass a key as a parameter to have that spreadsheet opened instead on your browser
+
+```
+fab spreadsheet:$GOOGLE_DOC_KEY
+```
+
+For example:
+
+```
+fab spreadsheet:12_F0yhsXEPN1w3GOlQB4_NKGadXiRLOa9l-HQu5jSL8
+// Will open 270 project number-crunching spreadsheet
+```
+
+
+Generating custom font
+----------------------
+
+This project uses a custom font build powered by [Fontello](http://fontello.com)
+If the font does not exist, it will be created when running `fab update`.
+To force generation of the custom font, run:
+
+```
+fab utils.install_font:true
+```
+
+Editing the font is a little tricky -- you have to use the Fontello web gui.
+To open the gui with your font configuration, run:
+
+```
+fab utils.open_font
+```
+
+Now edit the font, download the font pack, copy the new config.json into this
+project's `fontello` directory, and run `fab utils.install_font:true` again.
 
 Arbitrary Google Docs
 ----------------------
