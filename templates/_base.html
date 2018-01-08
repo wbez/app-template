@@ -2,10 +2,7 @@
 <html lang="en">
 
 <head>
-    <!-- CHARTBEAT -->
-    <script type="text/javascript">
-        var _sf_startpt=(new Date()).getTime();
-    </script>
+  
 
     <title>{{ COPY.content.project_name }}</title>
 
@@ -13,7 +10,8 @@
     {% include '_meta.html' %}
 
     <!-- FONTS -->
-    {% include '_fonts.html' %}
+     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+      <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
 
     <!-- CSS -->
     {{ CSS.push('less/app.less') }}
@@ -27,12 +25,23 @@
 </head>
 <body>
     <!-- ANALYTICS JAVASCRIPT -->
-    {{ JS.push('js/lib/modernizr.js') }}
-    {{ JS.push('js/lib/cookie.js') }}
-    {{ JS.push('js/lib/es6-promise.js') }}
-    {{ JS.push('js/lib/cross-storage-client.js') }}
-    {{ JS.push('js/app_config.js') }}
-    {{ JS.push('js/analytics.js') }}
+    <!-- ANALYTICS JAVASCRIPT -->
+    <script>
+    dataLayer = [];
+    </script>
+    <!-- WBEZ Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-57WD36&gtm_auth=tmHQZJnpm8lhBlUlUxcf9A&gtm_preview=env-1&gtm_cookies_win=x"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_auth=tmHQZJnpm8lhBlUlUxcf9A&gtm_preview=env-1&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-57WD36');</script>
+    <!-- End Google Tag Manager -->
+    <script>
+    dataLayer.push({'dL_pageType': 'interactive'});
+    </script>
+
     {{ JS.render('js/app-header.min.js') }}
 
     <a class="sr-only" href="#content">Skip To Content</a>
