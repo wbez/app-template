@@ -21,11 +21,7 @@
     {% include '_social_tags.html' %}
 
     {% block extra_head %}
-    {% endblock extra_head %}
-</head>
-<body>
-    <!-- ANALYTICS JAVASCRIPT -->
-    <!-- ANALYTICS JAVASCRIPT -->
+       <!-- ANALYTICS JAVASCRIPT -->
     <script>
     dataLayer = [];
     </script>
@@ -41,7 +37,10 @@
     <script>
     dataLayer.push({'dL_pageType': 'interactive'});
     </script>
-
+    {% endblock extra_head %}
+</head>
+<body>
+    {{ JS.push('js/app_config.js') }}
     {{ JS.render('js/app-header.min.js') }}
 
     <a class="sr-only" href="#content">Skip To Content</a>
@@ -80,13 +79,29 @@
 
     {% block footer %}
     <footer>
-        <div class="primary">
-            <ul>
+        <div class="related-stories row">
+            <h3> Find more stories </h3>
+            <div class="story">
+                <div class="color-overlay"></div>
+                <h4 class="story-title">Story Number One</h4>
+                <a href="" target="_blank"><img class="img-responsive" src="https://cdn.wbez.org/image/9b2b7dea93b6ebc981912839238649d7"></a>
+            </div>
+             <div class="story">
+                <div class="color-overlay"></div>
+                <h4 class="story-title">Story number 2</h4>
+                <a href="" target="_blank"><img class="img-responsive" src="https://cdn.wbez.org/image/9b2b7dea93b6ebc981912839238649d7"></a>
+            </div>
+             <div class="story">
+                <div class="color-overlay"></div>
+                <h4 class="story-title">This is another story</h4>
+                <a href="" target="_blank"><img class="img-responsive" src="https://cdn.wbez.org/image/9b2b7dea93b6ebc981912839238649d7"></a>
+            </div>
 
-            </ul>
         </div>
+
+
         <div class="secondary">
-            <p>&copy;2016 WBEZ</p>
+            <p>&copy;2018 WBEZ</p>
             <ul>
                 <li id="footerContact"><a href="http://www.wbez.org/contact">Contact</a></li>
                 <li id="footerContact"><a href="https://www.chicagopublicmedia.org/page/privacy-policy">Privacy Policy</a></li>
@@ -116,10 +131,5 @@
 
     {% block extra_foot %}
     {% endblock extra_foot %}
-
-    {# Setup Chartbeat last! #}
-    <script type="text/javascript">
-        $(ANALYTICS.setupChartbeat);
-    </script>
 </body>
 </html>

@@ -37,12 +37,13 @@
 
 //Fonts
 //-----------------
-@font-family-sans-serif:  "Source Sans Pro", Source Sans, Arial, sans-serif;
+@font-family-sans-serif:  'Source Sans Pro', Arial, sans-serif;
 @font-family-serif:       Georgia, Times, serif;
 @font-family-base:        @font-family-sans-serif;
 
 // General styles
 // -------------------------
+
 
 .btn.btn-blue,
 a.btn.btn-blue {
@@ -71,6 +72,11 @@ a.btn.btn-blue {
 
 p {
 	font-family: @font-family-serif;
+	font-size:16px;
+}
+
+h1, h2, h3 {
+	font-family: @font-family-sans-serif;
 }
 
 .knockout-example {
@@ -104,14 +110,6 @@ nav {
 	        &:first-child { margin-left: 0; }
 	    }
 
-	    &.site-links {
-	        float: left;
-	        margin-left: 30px;
-	    }
-	    &.site-links-2 {
-	        float: right;
-	        margin-right: 30px;
-	    }
         &.social-links {
             position: absolute;
             right: 0;
@@ -147,23 +145,7 @@ nav {
 	a:hover,
 	a:active { color: #bccae5; }
 
-    .npr {
-        width: 61px;
-
-        img {
-            margin: -2px 0 0 0;
-            width: 100%;
-            height: auto;
-        }
-    }
-	.shop {
-	    padding-left: 18px;
-	    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAICAYAAAAvOAWIAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG11AABzoAAA97wAAIT6AAB5yAAA7p8AADFuAAAPXaV5P1wAAAB/SURBVHjafM6xCUJBEITh7x1WYA/mmtiSuZGI+NIXGRrYgRVoERYiiBe9yORMVjkOdGH4l2F22G57vBVkzII/J6HDGU+Uf0pxtMMDCwxR0NIkwhk9LrhjimVDqXrpFMGMFa4Nv82wxzz2EtzUrJvXwTF+/GgM/1WHDw1bf3gPAMfKIptJWVXJAAAAAElFTkSuQmCC) no-repeat 0% 50%;
-	}
-	.stations {
-	    padding-left: 22px;
-	    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAG4nAABzrwAA92wAAIZNAABt8wAA6sIAADA+AAAYLjTjngYAAAGBSURBVHjapJO7UQMxEIa/u6GAowO7AptRAeAKODowoSJ8qRXYDhTbJFaIqQB3YMitwVQAHeAOjuQXozkYE7AzmpX2oX38u0XbtgC4EJcA3pqGE9S1KyWcAxPgjb/pDZjIh2K63veAV+DZW3PjQhwCQ2/NphN5DBy8NQcX4hNwBVyUQA1UQONCrIAdMPgl8gDYyaaRT11M1/udahq5ECfAHXChj5dyboCtMr331qxciLvvHgAv4pfA1ltzlHOls5RsK5tvn5J/UplFTr/WWZ1HndSfupMtxXS9nyjdvozfgQ2w6ASbAWPZVbJrShkfszpHwnoGfOrMJBtl/TkCm6Jt2zRIM+A24e9CfM/De2v62Tw8AAtvzbyUcg6sEv4uxBroqeuPQE+yNA8r+XCWRch34Fo8wZhk2+6uFGmZspGtVPdBWQB8AEPgXD34AWNOKdWhoFzonutOfnAnnjKodM91v5fgQuwJ31PU99Z8pMdZRzkWH3lrnju9udKmjoF5kn8NAFaQnhYx4i5jAAAAAElFTkSuQmCC) no-repeat 0% 50%;
-	}
+  
 }
 
 
@@ -190,29 +172,6 @@ header {
 
 .wbez-logo svg {
 	margin:10px;
-}
-
-// Cube ad
-// -------------------------
-
-.adwrapper {
-    zoom: 1;
-    padding: 0 0 12px 0;
-
-    .sponsor300 {
-        overflow: hidden;
-        width: 300px;
-        margin: 0 auto;
-    }
-    p {
-        margin: 6px 0 0 0;
-        font-size: 11px;
-        color: #999;
-
-        &.left { float: left; }
-        &.right { float: right; }
-        a { color: #6d8ac4; }
-    }
 }
 
 
@@ -256,26 +215,50 @@ footer {
 	}
 	a:hover, a:active { color: #bccae5; }
 
-	.primary {
-		float: left;
-		height: 52px;
-		font-size: 12px;
-		text-transform: lowercase;
+	.related-stories {
+		width:90%;
+		max-width:1200px;
+		margin:auto;
 
-		img {
-		    width: 66px;
-		    margin-top: -2px;
+		h3 {
+			text-align:center;
+			font-weight:700;
+			font-size:25px;
+			margin-bottom:20px;
 		}
-		li {
-		    margin-left: 31px;
-		    line-height: 52px;
-		    text-transform: lowercase;
 
-		    &:first-child {
-		        margin-left: 0;
-		        width: 66px;
-		    }
+		h4 {
+			font-size:20px;
+			color:@white;
 		}
+
+		.story {
+			position: relative;
+    		width: 30%;
+    		margin: 0 1.6%;
+    		float: left;
+		}
+
+		.color-overlay {
+			position:absolute;
+			top:0;
+			left:0;
+			opacity:0.5;
+			background-color:black;
+			min-height:100%;
+			min-width:100%;
+
+			&:hover{
+				opacity:0.8;
+			};
+		}
+
+		.story-title {
+			position:absolute;
+			left:12px;
+			top:2px;
+		}
+
 	}
 	.secondary {
 		height: 52px;
@@ -319,7 +302,9 @@ footer {
 	header { margin-left: -20px; margin-right: -20px; }
 	nav ul.site-links { margin-left: 20px; }
 	footer {
-		.primary { display: none; }
+		.related-stories { .story {position: relative; width: 100%; margin-bottom: 10px;}
+			h4 {font-size:25px;}
+		}
 		.secondary p { float: left; font-size: 10px; color: #bccae5; }
 		.secondary ul { float: right; }
 		.secondary li { font-size: 10px; text-transform: none; }

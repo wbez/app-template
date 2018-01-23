@@ -105,14 +105,10 @@ SHARE_URL = 'http://%s/%s/' % (PRODUCTION_S3_BUCKET, PROJECT_SLUG)
 """
 SERVICES
 """
-NPR_GOOGLE_ANALYTICS = {
-    'ACCOUNT_ID': 'UA-369047-40', #add id here
+WBEZ_GOOGLE_ANALYTICS = {
+    'ACCOUNT_ID': 'UA-83725893', #add id here
     'DOMAIN': 'wbez.org',
     'TOPICS': '' # e.g. '[1014,3,1003,1002,1001]'
-}
-
-VIZ_GOOGLE_ANALYTICS = {
-    'ACCOUNT_ID': 'UA-369047-40'
 }
 
 """
