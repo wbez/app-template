@@ -40,7 +40,7 @@ DEPLOYMENT
 
 These are placeholder locations, not to be used in production
 """
-PRODUCTION_S3_BUCKET = 'apps.wbez.org'
+PRODUCTION_S3_BUCKET = 'interactive.wbez.org'
 
 STAGING_S3_BUCKET = 'stage-apps.wbez.org'
 
