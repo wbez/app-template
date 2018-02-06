@@ -1,4 +1,4 @@
-nprviz's Project Template
+WBEZ's fork of nprviz's Project Template
 =========================
 
 * [About this template](#about-this-template)

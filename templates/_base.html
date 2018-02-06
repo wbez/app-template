@@ -9,18 +9,19 @@
     <!-- META TAGS -->
     {% include '_meta.html' %}
 
-    <!-- FONTS -->
-     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
-      <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
-
     <!-- CSS -->
     {{ CSS.push('less/app.less') }}
     {% block extra_css %}{% endblock extra_css %}
     {{ CSS.render('css/rendered/app.min.css') }}
 
+    <!-- FONTS -->
+     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+
     {% include '_social_tags.html' %}
 
     {% block extra_head %}
+    <link rel="shortcut icon" href="https://www.wbez.org/img/favicon.png" />
        <!-- ANALYTICS JAVASCRIPT -->
     <script>
     dataLayer = [];
@@ -37,6 +38,27 @@
     <script>
     dataLayer.push({'dL_pageType': 'interactive'});
     </script>
+
+
+    <!-- Facebook Pixel Code -->
+        <script>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '1594949957430062');
+          fbq('track', 'PageView');
+        fbq('track', 'ViewContent'); 
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=1594949957430062&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
+
     {% endblock extra_head %}
 </head>
 <body>
@@ -63,9 +85,10 @@
         </svg>
       </a>
   
-        <ul class="site-links">
-            <li class="twitter"><a rel="external" href="http://twitter.com/share?text={{ COPY.share.twitter_text|urlencode }}&amp;url={{ COPY.share.share_url|urlencode }}" alt="Share on Twitter" target="_blank" onclick="_gaq.push(['_trackEvent', '{{ PROJECT_SLUG }}', 'tweet', 'nav']);"><i class="fa fa-twitter"></i></a></li>
-            <li class="facebook"><a rel="external" href="https://www.facebook.com/sharer/sharer.php?u={{COPY.share.share_url}}" alt="Share on Facebook" target="_blank" onclick="_gaq.push(['_trackEvent', '{{ PROJECT_SLUG }}', 'facebook', 'nav']);"><i class="fa fa-facebook"></i></a></li>
+        <ul class="social-links">
+            <li class="donate"><a href="https://donate.chicagopublicmedia.org/give/wbez/"><i class="fa fa-heart" aria-hidden="true" target="_blank" ></i></a></li>
+            <li class="twitter"><a rel="external" href="http://twitter.com/share?text={{ COPY.share.twitter_text|urlencode }}&amp;url={{ SHARE_URL|urlencode }}" alt="Share on Twitter" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li class="facebook"><a rel="external" href="https://www.facebook.com/sharer/sharer.php?u={{COPY.share.share_url}}" alt="Share on Facebook" target="_blank"><i class="fa fa-facebook"></i></a></li>
         </ul>
 
     </nav>
