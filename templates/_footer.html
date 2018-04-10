@@ -1,0 +1,21 @@
+<div class="related-stories row">
+    <h3> Find more stories </h3>
+
+        {% for row in COPY.related_stories %}
+        <div class="story">
+            <div class="color-overlay"></div>
+            <h4 class="story-title">{{ row.headline }} </h4>
+            <a href="{{ row.link }}" target="_blank"><img class="img-responsive" src="{{ row.image_link }}"></a>
+        </div>
+        {% endfor %}
+</div>
+
+
+        <div class="secondary">
+            <p>&copy;2018 WBEZ</p>
+            <ul>
+                <li id="footerContact"><a href="http://www.wbez.org/contact">Contact</a></li>
+                <li id="footerContact"><a href="https://www.chicagopublicmedia.org/page/privacy-policy">Privacy Policy</a></li>
+                <li id="footerContact"><a href="https://www.chicagopublicmedia.org/give/support-wbez-0">Donate</a></li>
+            </ul>
+        </div>

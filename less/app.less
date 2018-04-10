@@ -7,38 +7,29 @@
 
 @img-root: "../../assets";
 
-
-// NPR color palette
-// -------------------------
-
 // WBEZ color palette
 // -------------------------
 
 @primary-control: #6D8AC4;
 @body-copy: #252525;
-@primary-red: #EC0101;
-@primary-grey: #64686E;
 
-@darker-red: #CF0000;
-@lighter-grey: #F5F5F5;
+@gray: #252525;
+@red: #ec0101;
+@lightgray: #F5F5F5;
 
 @yellow: #F9B816;
-@darker-yellow: #E3A816;
+@dark-yellow: #E3A816;
 @teal: #72A2A9;
-@darker-teal:#5C8E96;
-@secondary-grey: #888B90;
-@secondary-grey-darker: #6D6F73;
-@tertiary-grey:#C5C5C5;
-@tertiary-grey-darker:#C5C5C5;
-
-@yellow: #EFC637;
-@white: #fff;
-@gray-medium: #A0A0A0;
+@dark-teal: #5C8E96;
+@primary-gray: #888B90;
+@primary-gray-dark: #6D673;
+@secondary-gray: #C5C5C5;
+@secondary-gray-dark: #B1B1B1;
 
 //Fonts
 //-----------------
-@font-family-sans-serif:  'Source Sans Pro', Arial, sans-serif;
-@font-family-serif:       Georgia, Times, serif;
+@font-family-sans-serif:  "Source Sans Pro", Arial, sans-serif;
+@font-family-serif:       "CharterITCStd-Bold", "Palatino Linotype", Palatino, serif;
 @font-family-base:        @font-family-sans-serif;
 
 // General styles
@@ -71,16 +62,26 @@ a.btn.btn-blue {
 }
 
 p {
-	font-family: @font-family-serif;
+	font-family: @font-family-sans-serif;
 	font-size:16px;
+	-webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
 	font-family: @font-family-sans-serif;
 }
 
+a,
+	a:link,
+	a:visited {
+	    color: @red;
+	    font-weight: bold;
+	}
+	a:hover,
+	a:active { opacity:0.5; text-decoration: underline; }
+
 .knockout-example {
-	font-family: @font-family-condensed;
+	font-family: @font-family-sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 0.2rem;
 }
@@ -114,7 +115,6 @@ nav {
             position: absolute;
             right: 0;
             top: -1px;
-            background-color: #999;
 
             span { margin-right: 20px; }
             a {
@@ -135,16 +135,6 @@ nav {
         }
 	}
 
-	a,
-	a:link,
-	a:visited {
-	    color: #6d8ac4;
-	    font-weight: bold;
-	    text-transform: lowercase;
-	}
-	a:hover,
-	a:active { color: #bccae5; }
-
   
 }
 
@@ -153,21 +143,36 @@ nav {
 // -------------------------
 
 header {
-	background-color: #ebebeb;
+	background-color: @lightgray;
 	padding: 50px 30px 30px 30px;
 	margin: 0;
-	border-bottom: 2px solid #fff;
+	text-align:center;
 
 	h1 {
-	    font-size: 48px;
-	    color: #555;
+	    font-size: 38px;
+	    color: #000;
 	    margin-bottom: 11px;
+	    font-weight: 700;
+	    font-family:@font-family-serif;
 	}
+
 	h2 {
-	    font-size: 15px;
-	    color: #666;
+	    font-size: 17px;
+	    color: @body-copy;
 	    margin: 0;
 	}
+
+}
+
+#story-meta {
+	margin: 22px;
+
+	p {
+		font-size: 12px;
+		margin: 0;
+
+		&.byline span { text-transform: uppercase; }
+		&.dateblock .date { margin-right: 0.8em; }	}
 }
 
 .wbez-logo svg {
@@ -179,17 +184,6 @@ header {
 // -------------------------
 
 #content { margin-top: 44px; }
-#story-meta {
-	margin-bottom: 22px;
-
-	p {
-		font-size: 12px;
-		margin: 0;
-		color: #666;
-
-		&.byline span { text-transform: uppercase; }
-		&.dateblock .date { margin-right: 0.8em; }	}
-}
 
 h1 + #story-meta { margin-top: -11px; }
 
@@ -216,7 +210,7 @@ footer {
 	a:hover, a:active { color: #bccae5; }
 
 	.related-stories {
-		width:90%;
+		width:100%;
 		max-width:1200px;
 		margin:auto;
 
@@ -225,17 +219,18 @@ footer {
 			font-weight:700;
 			font-size:25px;
 			margin-bottom:20px;
+			-webkit-font-smoothing: antialiased;
 		}
 
 		h4 {
 			font-size:20px;
-			color:@white;
+			color:#fff;
 		}
 
 		.story {
 			position: relative;
-    		width: 30%;
-    		margin: 0 1.6%;
+    		width: 22%;
+    		margin: 1.5%;
     		float: left;
 		}
 

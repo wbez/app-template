@@ -3,67 +3,39 @@
 
 <head>
   
-
     <title>{{ COPY.content.project_name }}</title>
 
     <!-- META TAGS -->
     {% include '_meta.html' %}
+    {% include '_social_tags.html' %}
 
     <!-- CSS -->
     {{ CSS.push('less/app.less') }}
-    {% block extra_css %}{% endblock extra_css %}
+    {% block extra_css %}
+    {% endblock extra_css %}
     {{ CSS.render('css/rendered/app.min.css') }}
 
     <!-- FONTS -->
-     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700|Amatic+SC:400,700' rel='stylesheet' type='text/css'>
-    <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    {% include '_fonts.html' %}
 
-    {% include '_social_tags.html' %}
+    <!--ANALYTICS-->
+    {% include '_analytics.html' %}
+
 
     {% block extra_head %}
     <link rel="shortcut icon" href="https://www.wbez.org/img/favicon.png" />
-       <!-- ANALYTICS JAVASCRIPT -->
-    <script>
-    dataLayer = [];
-    </script>
-    <!-- WBEZ Google Tag Manager -->
-    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-57WD36&gtm_auth=tmHQZJnpm8lhBlUlUxcf9A&gtm_preview=env-1&gtm_cookies_win=x"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    '//www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_auth=tmHQZJnpm8lhBlUlUxcf9A&gtm_preview=env-1&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-57WD36');</script>
-    <!-- End Google Tag Manager -->
-    <script>
-    dataLayer.push({'dL_pageType': 'interactive'});
-    </script>
-
-
-    <!-- Facebook Pixel Code -->
-        <script>
-          !function(f,b,e,v,n,t,s)
-          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-          n.queue=[];t=b.createElement(e);t.async=!0;
-          t.src=v;s=b.getElementsByTagName(e)[0];
-          s.parentNode.insertBefore(t,s)}(window, document,'script',
-          'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1594949957430062');
-          fbq('track', 'PageView');
-        fbq('track', 'ViewContent'); 
-        </script>
-        <noscript><img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=1594949957430062&ev=PageView&noscript=1"
-        /></noscript>
-    <!-- End Facebook Pixel Code -->
-
+    <script src="https://use.fontawesome.com/f8edc319a0.js"></script>
     {% endblock extra_head %}
+
 </head>
+
 <body>
     {{ JS.push('js/app_config.js') }}
     {{ JS.render('js/app-header.min.js') }}
+
+    <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57WD36" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <a class="sr-only" href="#content">Skip To Content</a>
 
@@ -102,35 +74,7 @@
 
     {% block footer %}
     <footer>
-        <div class="related-stories row">
-            <h3> Find more stories </h3>
-            <div class="story">
-                <div class="color-overlay"></div>
-                <h4 class="story-title">Story Number One</h4>
-                <a href="" target="_blank"><img class="img-responsive" src="https://cdn.wbez.org/image/9b2b7dea93b6ebc981912839238649d7"></a>
-            </div>
-             <div class="story">
-                <div class="color-overlay"></div>
-                <h4 class="story-title">Story number 2</h4>
-                <a href="" target="_blank"><img class="img-responsive" src="https://cdn.wbez.org/image/9b2b7dea93b6ebc981912839238649d7"></a>
-            </div>
-             <div class="story">
-                <div class="color-overlay"></div>
-                <h4 class="story-title">This is another story</h4>
-                <a href="" target="_blank"><img class="img-responsive" src="https://cdn.wbez.org/image/9b2b7dea93b6ebc981912839238649d7"></a>
-            </div>
-
-        </div>
-
-
-        <div class="secondary">
-            <p>&copy;2018 WBEZ</p>
-            <ul>
-                <li id="footerContact"><a href="http://www.wbez.org/contact">Contact</a></li>
-                <li id="footerContact"><a href="https://www.chicagopublicmedia.org/page/privacy-policy">Privacy Policy</a></li>
-                <li id="footerContact"><a href="https://www.chicagopublicmedia.org/give/support-wbez-0">Donate</a></li>
-            </ul>
-        </div>
+        {% include '_footer.html' %}
     </footer>
     {% endblock footer %}
 

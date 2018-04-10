@@ -7,6 +7,16 @@
             <div class="col-md-12">
                 <h1>{{ COPY.content.project_name|smarty }}</h1>
                 <h2>{{ COPY.content.lorem_ipsum|smarty }}</h2>
+
+                <div id="story-meta">
+                    <p class="byline">by <a href="{{ COPY.content.byline_bio_link }}" target="_blank">  
+                        <span>{{ COPY.content.byline }}</span></p> </a>
+                    <p class="dateblock">
+                        <span class="date">{{ COPY.content.pubdate }}</span>
+                        <span class="time"> {{ COPY.content.pubtime }}</span>
+                    </p>
+                </div>
+
             </div>
         </div>
     </div>
@@ -19,16 +29,6 @@
     <div class="container">
         <div class="row">
             <div id="main-content" class="col-md-8">
-
-                <h1>{{ COPY.content.project_name }}</h1>
-
-                <div id="story-meta">
-                    <p class="byline">by <span>{{ COPY.content.byline }}</span></p>
-                    <p class="dateblock">
-                        <span class="date">{{ COPY.content.pubdate }}</span>
-                        <span class="time"> {{ COPY.content.pubtime }}</span>
-                    </p>
-                </div>
 
                 <h2 class="knockout-example">Example COPY list</h2>
                 <dl>
