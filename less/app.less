@@ -63,12 +63,13 @@ a.btn.btn-blue {
 
 p {
 	font-family: @font-family-sans-serif;
-	font-size:16px;
+	font-size:18px;
 	-webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3 {
 	font-family: @font-family-sans-serif;
+	font-weight:700;
 }
 
 a,
@@ -81,10 +82,27 @@ a,
 	a:hover,
 	a:active { opacity:0.5; text-decoration: underline; }
 
+blockquote {
+    border-color: #ec0101;
+    border-width: 0 0 0 3px;
+    line-height: 28px;
+    color:#252525;
+    width:100%;
+    font-family: "CharterITCStd", serif;
+    font-size:20px;
+}
+
 .knockout-example {
 	font-family: @font-family-sans-serif;
 	text-transform: uppercase;
 	letter-spacing: 0.2rem;
+}
+
+.caption {
+    background-color: #F5F5F4;
+    color: #848687;
+    font-size: 15px;
+    padding: 7px;
 }
 
 
@@ -186,6 +204,23 @@ header {
 #content { margin-top: 44px; }
 
 h1 + #story-meta { margin-top: -11px; }
+
+.offset {
+	padding: 20px; 	
+	margin: 20px 0px; 
+	border-top: 2px solid #ec0101; 	
+	background: #eeeeee; 	
+	border-bottom: 2px solid #ec0101; 
+}
+
+.offset p { 	
+	font-size:14px;
+} 
+
+
+.offset h2 { 	
+	margin-bottom:10px; 	
+}
 
 
 
